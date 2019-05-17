@@ -4,7 +4,7 @@
 [![Hex version](https://img.shields.io/hexpm/v/nerves_system_rpi.svg "Hex version")](https://hex.pm/packages/nerves_system_rpi)
 
 This is the base Nerves System configuration for the Raspberry Pi A+, B,
-and B+. It will also work with the Raspberry Pi Zero, but usually
+and B+ for Valiot.. It will also work with the Raspberry Pi Zero, but usually
 [nerves_system_rpi0](https://github.com/nerves-project/nerves_system_rpi0) is
 preferable since it configures the USB port so that it can be plugged into
 a computer. This is very convenient for powering and debugging the Pi Zero.
