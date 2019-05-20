@@ -109,7 +109,7 @@ defmodule ValiotSystemRpi.MixProject do
     if function_exported?(Mix, :target, 1) do
       apply(Mix, :target, [:target])
     else
-      System.put_env("MIX_TARGET", "valiot_rpi3")
+      System.put_env("MIX_TARGET", "valiot_rpi")
     end
   end
 end
