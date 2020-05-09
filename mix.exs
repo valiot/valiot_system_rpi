@@ -1,7 +1,9 @@
 defmodule ValiotSystemRpi.MixProject do
   use Mix.Project
 
+  @github_organization "valiot"
   @app :valiot_system_rpi
+
   @version Path.join(__DIR__, "VERSION")
            |> File.read!()
            |> String.trim()
@@ -35,7 +37,7 @@ defmodule ValiotSystemRpi.MixProject do
     [
       type: :system,
       artifact_sites: [
-        {:github_releases, "valiot/#{@app}"}
+        {:github_releases, "#{@github_organization}/#{@app}"}
       ],
       build_runner_opts: build_runner_opts(),
       platform: Nerves.System.BR,
@@ -48,9 +50,9 @@ defmodule ValiotSystemRpi.MixProject do
 
   defp deps do
     [
-      {:nerves, "~> 1.5.0", runtime: false},
-      {:nerves_system_br, "1.8.5", runtime: false},
-      {:nerves_toolchain_armv6_rpi_linux_gnueabi, "1.2.0", runtime: false},
+      {:nerves, "~> 1.5.4 or ~> 1.6.0", runtime: false},
+      {:nerves_system_br, "1.11.2", runtime: false},
+      {:nerves_toolchain_armv6_rpi_linux_gnueabi, "~> 1.3.0", runtime: false},
       {:nerves_system_linter, "~> 0.3.0", runtime: false},
       {:ex_doc, "~> 0.18", only: [:dev, :test], runtime: false}
     ]
@@ -67,7 +69,7 @@ defmodule ValiotSystemRpi.MixProject do
       maintainers: ["Aldebaran Alonso", "Rocío Alvarado", "Valiot"],
       files: package_files(),
       licenses: ["Apache 2.0"],
-      links: %{"Github" => "https://github.com/valiot/#{@app}"}
+      links: %{"GitHub" => "https://github.com/#{@github_organization}/#{@app}"}
     ]
   end
 
