@@ -1,5 +1,66 @@
 # Changelog
 
+## v1.15.1
+
+This is a security/bug fix release that updates to Buildroot 2021.02.1 and OTP
+23.3.1. It should be safe for everyone to apply.
+
+* Improvements
+  * espeak has been removed from the default install to trim 13 MB off the root
+    filesystem
+
+* Updated dependencies
+  * [nerves_system_br v1.15.1](https://github.com/nerves-project/nerves_system_br/releases/tag/v1.15.1)
+  * [Buildroot 2021.02](http://lists.busybox.net/pipermail/buildroot/2021-April/307970.html)
+  * [Erlang/OTP 23.3.1](https://erlang.org/download/OTP-23.3.1.README)
+
+## v1.15.0
+
+This release updates to Buildroot 2021.02 and OTP 23.2.7. If you have made a
+custom system off this one, please review the `nerves_system_br v1.15.0` release
+notes.
+
+The Nerves toolchain has also been updated to v1.4.2. This brings in Linux 4.14
+headers to enable use of cdev and eBPF. This won't affect most users.
+
+* Updated dependencies
+  * [nerves_system_br v1.15.0](https://github.com/nerves-project/nerves_system_br/releases/tag/v1.15.0)
+  * [Buildroot 2021.02](http://lists.busybox.net/pipermail/buildroot/2021-March/305168.html)
+  * [Erlang/OTP 23.2.7](https://erlang.org/download/OTP-23.2.7.README)
+  * [nerves toolchains v1.4.2](https://github.com/nerves-project/toolchains/releases/tag/v1.4.2)
+
+## v1.14.1
+
+This is a patch release for v1.14.0 which fixes the ABI spec passed for zigler.
+
+* Improvements
+  * A few unused directories in `/etc` have been removed. These primarily were
+    network initialization script directories that aren't used on Nerves, but
+    were provided by default by Buildroot.
+
+## v1.14.0
+
+This release updates to Buildroot 2020.11.2, GCC 10.2 and OTP 23.2.4.
+
+When migrating custom systems based, please be aware of the following important
+changes:
+
+* There's a new `getrandom` syscall that is made early in BEAM startup. This
+  blocks the BEAM before `rngd` can be started to provide entropy. The
+  workaround is to start `rngd` from `erlinit`. See `erlinit.config`.
+* Hardware float is enabled (`eabihf`). If you have pre-built binaries, you will
+  need to compile them since previous `eabi` was used.
+* The GCC 10.2.0 toolchain has a different name that calls out "nerves" as the
+  vendor and the naming is now more consistent with other toolchain providers.
+* Experimental support for tooling that requires more information about the
+  target has been added. The initial support focuses on zigler.
+
+* Updated dependencies
+  * [nerves_system_br: bump to v1.14.4](https://github.com/nerves-project/nerves_system_br/releases/tag/v1.14.4)
+  * [Buildroot 2020.11.2](http://lists.busybox.net/pipermail/buildroot/2021-January/302574.html)
+  * [Erlang/OTP 23.2.4](https://erlang.org/download/OTP-23.2.4.README)
+  * [Nerves toolchains 1.4.1](https://github.com/nerves-project/toolchains/releases/tag/v1.4.1)
+
 ## v1.13.3
 
 This is a bug fix release and contains no major changes.
@@ -208,8 +269,6 @@ https://github.com/fhunleth/rpi_fb_capture/issues/2 for details.
   * Linux 4.19.58 with patches from the Raspberry Pi Foundation
 
 ## v1.8.0
-
-This release
 
 This release updates Erlang to OTP 22 and gcc from version 7.3.0 to 8.3.0.
 See the nerves_system_br and toolchain release notes for more information.
